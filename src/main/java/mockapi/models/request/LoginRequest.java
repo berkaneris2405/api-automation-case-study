@@ -1,4 +1,4 @@
-package models.request;
+package mockapi.models.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoginRequest {
+
 	private String password;
+
 	private String username;
+
 }

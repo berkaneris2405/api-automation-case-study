@@ -1,4 +1,4 @@
-package models.response;
+package mockapi.models.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateOrderResponse {
+public class ProductDetails {
+
 	private Integer quantity;
-	private String orderId;
-	private String status;
+
+	private Integer productId;
+
 }

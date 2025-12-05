@@ -1,4 +1,4 @@
-package models.response;
+package mockapi.models.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateOrderFailedResponse {
+public class AuthLoginFailedResponse {
 
 	private String message;
 
