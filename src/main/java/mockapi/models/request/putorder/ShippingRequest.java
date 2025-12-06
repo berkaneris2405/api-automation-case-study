@@ -1,4 +1,4 @@
-package mockapi.models.request;
+package mockapi.models.request.putorder;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,10 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDetails {
-
-	private Integer quantity;
-
-	private Integer productId;
-
+public class ShippingRequest {
+	private Integer addressId;
 }

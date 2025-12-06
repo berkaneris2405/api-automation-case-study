@@ -1,4 +1,4 @@
-package mockapi.models.response;
+package mockapi.models.response.createorder;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package mockapi.models.response;
+package mockapi.models.request.putorder;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthLoginSuccessfulResponse {
-
-	private String token;
-
+public class ItemRequest {
+	private Integer quantity;
+	private Integer productId;
 }

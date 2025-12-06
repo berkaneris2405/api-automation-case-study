@@ -1,4 +1,4 @@
-package mockapi.models.request;
+package mockapi.models.response.putorder;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,10 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginRequest {
+public class PutOrderResponse {
 
-	private String password;
-
-	private String username;
+	private String message;
 
 }
