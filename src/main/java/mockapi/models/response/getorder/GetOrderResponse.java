@@ -10,7 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetOrderResponse {
+
 	private ItemResponse item;
+
 	private ShippingResponse shipping;
+
 	private OrderResponse order;
+
 }

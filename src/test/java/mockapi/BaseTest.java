@@ -28,5 +28,4 @@ public abstract class BaseTest {
 		RestAssured.port = wiremockServer.port();
 	}
 
-
 }

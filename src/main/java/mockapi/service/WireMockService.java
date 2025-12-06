@@ -75,62 +75,58 @@ public class WireMockService {
 			throws JsonProcessingException {
 
 		WireMock.stubFor(WireMock.post(WireMock.urlEqualTo("/orders"))
-				.withRequestBody(WireMock.equalToJson(objectMapper.writeValueAsString(createOrderRequest)))
-				.willReturn(aResponse().withStatus(404)
-						.withHeader(CONTENT_TYPE_HEADER, APPLICATION_JSON_UTF8)
-						.withBody("{ \"message\": \"Product not found\" }")));
+			.withRequestBody(WireMock.equalToJson(objectMapper.writeValueAsString(createOrderRequest)))
+			.willReturn(aResponse().withStatus(404)
+				.withHeader(CONTENT_TYPE_HEADER, APPLICATION_JSON_UTF8)
+				.withBody("{ \"message\": \"Product not found\" }")));
 
 	}
 
-	public void stubForGetOrderRequest(String orderId)
-			throws JsonProcessingException {
+	public void stubForGetOrderRequest(String orderId) throws JsonProcessingException {
 
 		WireMock.stubFor(WireMock.get(WireMock.urlEqualTo("/orders/" + orderId))
-				.willReturn(aResponse().withStatus(200)
-						.withHeader(CONTENT_TYPE_HEADER, APPLICATION_JSON_UTF8)
-						.withBody("{ \"order\": { \"id\": \"MOCK-ORDER-001\", \"status\": \"CREATED\" }, \"item\": { \"productId\": 555, \"quantity\": 2 }, \"shipping\": { \"addressId\": 3001 } }")));
+			.willReturn(aResponse().withStatus(200)
+				.withHeader(CONTENT_TYPE_HEADER, APPLICATION_JSON_UTF8)
+				.withBody(
+						"{ \"order\": { \"id\": \"MOCK-ORDER-001\", \"status\": \"CREATED\" }, \"item\": { \"productId\": 555, \"quantity\": 2 }, \"shipping\": { \"addressId\": 3001 } }")));
 
 	}
 
-	public void stubForGetOrderRequestWithInvalidOrderId(String orderId)
-			throws JsonProcessingException {
+	public void stubForGetOrderRequestWithInvalidOrderId(String orderId) throws JsonProcessingException {
 
 		WireMock.stubFor(WireMock.get(WireMock.urlEqualTo("/orders/" + orderId))
-				.willReturn(aResponse().withStatus(400)
-						.withHeader(CONTENT_TYPE_HEADER, APPLICATION_JSON_UTF8)
-						.withBody("{ \"message\": \"Invalid order Id\" }")));
+			.willReturn(aResponse().withStatus(400)
+				.withHeader(CONTENT_TYPE_HEADER, APPLICATION_JSON_UTF8)
+				.withBody("{ \"message\": \"Invalid order Id\" }")));
 
 	}
 
-	public void stubForGetOrderRequestForNotFoundOrder(String orderId)
-			throws JsonProcessingException {
+	public void stubForGetOrderRequestForNotFoundOrder(String orderId) throws JsonProcessingException {
 
 		WireMock.stubFor(WireMock.get(WireMock.urlEqualTo("/orders/" + orderId))
-				.willReturn(aResponse().withStatus(404)
-						.withHeader(CONTENT_TYPE_HEADER, APPLICATION_JSON_UTF8)
-						.withBody("{ \"message\": \"Order not found\" }")));
+			.willReturn(aResponse().withStatus(404)
+				.withHeader(CONTENT_TYPE_HEADER, APPLICATION_JSON_UTF8)
+				.withBody("{ \"message\": \"Order not found\" }")));
 
 	}
 
-	public void stubForPutOrderRequest(String orderId, PutOrderRequest putOrderRequest)
-			throws JsonProcessingException {
+	public void stubForPutOrderRequest(String orderId, PutOrderRequest putOrderRequest) throws JsonProcessingException {
 
 		WireMock.stubFor(WireMock.put(WireMock.urlEqualTo("/orders/" + orderId))
-				.withRequestBody(WireMock.equalToJson(objectMapper.writeValueAsString(putOrderRequest)))
-				.willReturn(aResponse().withStatus(200)
-						.withHeader(CONTENT_TYPE_HEADER, APPLICATION_JSON_UTF8)
-						.withBody("{ \"message\": \"Order updated successfully\" }")));
+			.withRequestBody(WireMock.equalToJson(objectMapper.writeValueAsString(putOrderRequest)))
+			.willReturn(aResponse().withStatus(200)
+				.withHeader(CONTENT_TYPE_HEADER, APPLICATION_JSON_UTF8)
+				.withBody("{ \"message\": \"Order updated successfully\" }")));
 
 	}
 
-	public void stubForPatchOrdersStatusRequest(OrderRequest orderRequest)
-			throws JsonProcessingException {
+	public void stubForPatchOrdersStatusRequest(OrderRequest orderRequest) throws JsonProcessingException {
 
 		WireMock.stubFor(WireMock.patch(WireMock.urlEqualTo("/orders/status"))
-				.withRequestBody(WireMock.equalToJson(objectMapper.writeValueAsString(orderRequest)))
-				.willReturn(aResponse().withStatus(200)
-						.withHeader(CONTENT_TYPE_HEADER, APPLICATION_JSON_UTF8)
-						.withBody("{ \"message\": \"Order partially updated successfully\" }")));
+			.withRequestBody(WireMock.equalToJson(objectMapper.writeValueAsString(orderRequest)))
+			.willReturn(aResponse().withStatus(200)
+				.withHeader(CONTENT_TYPE_HEADER, APPLICATION_JSON_UTF8)
+				.withBody("{ \"message\": \"Order partially updated successfully\" }")));
 
 	}
 

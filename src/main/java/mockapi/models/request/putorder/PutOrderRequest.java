@@ -10,7 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PutOrderRequest {
+
 	private ItemRequest item;
+
 	private ShippingRequest shipping;
+
 	private OrderRequest order;
+
 }

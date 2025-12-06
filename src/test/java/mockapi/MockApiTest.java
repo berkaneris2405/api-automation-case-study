@@ -22,7 +22,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import mockapi.service.WireMockService;
 
-
 public class MockApiTest extends BaseTest {
 
 	public WireMockService wireMockService = new WireMockService();
@@ -36,7 +35,7 @@ public class MockApiTest extends BaseTest {
 
 		wireMockService.stubForAuthLoginSuccessfulRequest(loginRequest);
 
-        Response response = mockApiController.postAuthLoginRequest(loginRequest);
+		Response response = mockApiController.postAuthLoginRequest(loginRequest);
 		AuthLoginSuccessfulResponse authRequest = response.as(AuthLoginSuccessfulResponse.class);
 
 		Assertions.assertThat(response.getStatusCode()).isEqualTo(200);
@@ -115,10 +114,10 @@ public class MockApiTest extends BaseTest {
 	@Test
 	public void testCreateOrderRequestForNotFoundProduct() throws JsonProcessingException {
 		CreateOrderRequest createOrderRequest = CreateOrderRequest.builder()
-				.userId(1001)
-				.addressId(3001)
-				.productDetails(ProductDetails.builder().productId(1111).quantity(1).build())
-				.build();
+			.userId(1001)
+			.addressId(3001)
+			.productDetails(ProductDetails.builder().productId(1111).quantity(1).build())
+			.build();
 
 		wireMockService.stubForCreateOrderRequestForNotFoundProduct(createOrderRequest);
 		Response response = mockApiController.postCreateOrderRequest(createOrderRequest);
@@ -126,8 +125,7 @@ public class MockApiTest extends BaseTest {
 		CreateOrderFailedResponse createOrderResponseForNotFoundProduct = response.as(CreateOrderFailedResponse.class);
 
 		Assertions.assertThat(response.getStatusCode()).isEqualTo(404);
-		Assertions.assertThat(createOrderResponseForNotFoundProduct.getMessage())
-				.isEqualTo("Product not found");
+		Assertions.assertThat(createOrderResponseForNotFoundProduct.getMessage()).isEqualTo("Product not found");
 	}
 
 	@Test
@@ -158,10 +156,8 @@ public class MockApiTest extends BaseTest {
 
 		GetOrderFailedResponse getOrderResponseForInvalidOrderId = response.as(GetOrderFailedResponse.class);
 
-
 		Assertions.assertThat(response.getStatusCode()).isEqualTo(400);
-		Assertions.assertThat(getOrderResponseForInvalidOrderId.getMessage())
-				.isEqualTo("Invalid order Id");
+		Assertions.assertThat(getOrderResponseForInvalidOrderId.getMessage()).isEqualTo("Invalid order Id");
 
 	}
 
@@ -173,30 +169,26 @@ public class MockApiTest extends BaseTest {
 
 		GetOrderFailedResponse getOrderResponseForNotFoundOrder = response.as(GetOrderFailedResponse.class);
 
-
 		Assertions.assertThat(response.getStatusCode()).isEqualTo(404);
-		Assertions.assertThat(getOrderResponseForNotFoundOrder.getMessage())
-				.isEqualTo("Order not found");
+		Assertions.assertThat(getOrderResponseForNotFoundOrder.getMessage()).isEqualTo("Order not found");
 
 	}
 
 	@Test
 	public void testPutOrderRequest() throws JsonProcessingException {
 		PutOrderRequest putOrderRequest = PutOrderRequest.builder()
-				.item(ItemRequest.builder().productId(590).quantity(10).build())
-				.shipping(ShippingRequest.builder().addressId(5001).build())
-				.order(OrderRequest.builder().id("MOCK-ORDER-001").status("UPDATED").build())
-				.build();
+			.item(ItemRequest.builder().productId(590).quantity(10).build())
+			.shipping(ShippingRequest.builder().addressId(5001).build())
+			.order(OrderRequest.builder().id("MOCK-ORDER-001").status("UPDATED").build())
+			.build();
 
 		wireMockService.stubForPutOrderRequest("MOCK-ORDER-001", putOrderRequest);
-		Response response = mockApiController.putOrdersRequest("MOCK-ORDER-001",putOrderRequest);
+		Response response = mockApiController.putOrdersRequest("MOCK-ORDER-001", putOrderRequest);
 
 		PutOrderResponse putOrderResponse = response.as(PutOrderResponse.class);
 
-
 		Assertions.assertThat(response.getStatusCode()).isEqualTo(200);
-		Assertions.assertThat(putOrderResponse.getMessage())
-				.isEqualTo("Order updated successfully");
+		Assertions.assertThat(putOrderResponse.getMessage()).isEqualTo("Order updated successfully");
 
 	}
 
@@ -210,8 +202,7 @@ public class MockApiTest extends BaseTest {
 		PatchOrderResponse patchOrderResponse = response.as(PatchOrderResponse.class);
 
 		Assertions.assertThat(response.getStatusCode()).isEqualTo(200);
-		Assertions.assertThat(patchOrderResponse.getMessage())
-				.isEqualTo("Order partially updated successfully");
+		Assertions.assertThat(patchOrderResponse.getMessage()).isEqualTo("Order partially updated successfully");
 
 	}
 
